@@ -6,6 +6,12 @@
 </head>
 
 <body>
+  <script>
+    // Check if user is logged in
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
   <h1>Book I: Villainous</h1>
   <div class="wrapper" , id="land">
     <p>Shattered by war, Lark's life gets fractured when betrayal is hand-delivered to him by who he trusted most.
