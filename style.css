@@ -1,104 +1,169 @@
-html {
-  height: 100%;
-  width: 100%;
+/* 1. Variables & Base Styles */
+:root {
+  --clr-primary: #ff5e5b;
+  --clr-accent: #ffc371;
+  --clr-dark: #2e2e2e;
+  --clr-light: #f4f4f4;
+  --transition: 0.4s ease;
+  --font-sans: 'Poppins', sans-serif;
 }
 
-body {
-  min-height: 150vh;
-  margin: 0;
-  padding: 20px;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  overflow-y: auto;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: #007bff;
-  padding: 10px;
-  border: 2px solid #0056b3;
-  border-radius: 8px;
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-a:hover {
-  background-color: #0056b3;
-  border-color: #004085;
-}
-
-li {
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  list-style-type: none;
-}
-
-.li {
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  background-color: transparent;
-  border: none;
+  margin: 0;
   padding: 0;
 }
 
-p {
-  color: black;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.dropdown {
-  background-color: white;
-  font-size: 20px;
-  border: none;
-}
-.dropdown-display {
-  display: none;
-  background-color: white;
-  font-size: 20px;
-  border: none
-}
-.dropdown {
-  cursor: pointer;
-  position: relative;
-  padding-right: 20px;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background: linear-gradient(135deg, var(--clr-light), var(--clr-accent));
+  color: var(--clr-dark);
+  overflow-x: hidden;
+}
+
+/* 2. Utility Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+nav a {
+  color: var(--clr-dark);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background var(--transition), color var(--transition);
+}
+nav a:hover {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
+/* 4. Hero Header */
+.header {
+  height: 60vh;
+  background: url('Map.jpg') center/cover no-repeat,
+              linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+.header h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+.header p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* 5. Content Sections */
+main {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h2 {
+  margin-top: 40px;
+  color: var(--clr-primary);
+  border-bottom: 2px solid var(--clr-primary);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+p, ul {
+  margin-top: 20px;
+}
+ul li {
+  margin-bottom: 12px;
+}
+
+/* 6. Buttons & Links */
+a.btn {
+  display: inline-block;
+  background: var(--clr-primary);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+a.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* 7. Dropdowns */
+.dropdown {
+  cursor: pointer;
+  margin-top: 30px;
+  font-weight: 600;
+  color: var(--clr-primary);
+  position: relative;
+  padding-right: 24px;
+}
 .dropdown::after {
   content: "▼";
   position: absolute;
   right: 0;
-  top: 0;
-  font-size: 16px;
-  color: #007bff;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition);
 }
-
 .dropdown.open::after {
   transform: rotate(180deg);
 }
 
+.dropdown-display {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s var(--transition);
+  margin-left: 20px;
+}
 .dropdown-display.show {
-  display: block;
+  max-height: 500px; /* plenty of room */
 }
-.wrapper {
-  height: 100px;
-  padding-top: 80px;
+
+/* 8. Footer */
+footer {
   text-align: center;
-  padding-left: 12.5%;
-  padding-right: 12.5%;
-}
-#land-map {
-  width: 100%;
-  height: 100%;
-  background-image: url('Map.jpg');
-  background-size: cover;
-  background-position: center;
+  margin: 60px 0 20px;
+  color: #555;
+  font-size: 0.9rem;
 }
