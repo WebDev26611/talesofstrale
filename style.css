@@ -157,7 +157,7 @@ a.btn:hover {
   margin-left: 20px;
 }
 .dropdown-display.show {
-  max-height: 500px; /* plenty of room */
+  max-height: 5000px; /* plenty of room */
 }
 
 /* 8. Footer */
