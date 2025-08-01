@@ -76,7 +76,7 @@ nav a:hover {
 /* 4. Hero Header */
 .header {
   height: 60vh;
-  background: url('Map.jpg') center/cover no-repeat,
+  background: url('Book_cover.png') center/cover no-repeat,
               linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
   display: flex;
   justify-content: center;
